@@ -97,6 +97,7 @@ GLfloat gCubeVertexData[216] =
 @end
 
 @implementation PXViewController
+@synthesize context, effect;
 
 - (void)viewDidLoad
 {

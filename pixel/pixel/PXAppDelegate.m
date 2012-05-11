@@ -9,6 +9,7 @@
 #import "PXAppDelegate.h"
 
 @implementation PXAppDelegate
+@synthesize window, viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
