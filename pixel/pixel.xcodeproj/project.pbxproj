@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AAD426C155EF5870002F2F5 /* Sprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4AAD426A155EF5870002F2F5 /* Sprite.mm */; };
 		B20868E01559E2D800D14DA6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20868DF1559E2D800D14DA6 /* UIKit.framework */; };
 		B20868E21559E2D800D14DA6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20868E11559E2D800D14DA6 /* Foundation.framework */; };
 		B20868E41559E2D800D14DA6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20868E31559E2D800D14DA6 /* CoreGraphics.framework */; };
@@ -18,7 +19,6 @@
 		B20868F61559E2D800D14DA6 /* pixel.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = B20868F51559E2D800D14DA6 /* pixel.entitlements */; };
 		B20868F81559E2D800D14DA6 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = B20868F71559E2D800D14DA6 /* Shader.fsh */; };
 		B20868FA1559E2D800D14DA6 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = B20868F91559E2D800D14DA6 /* Shader.vsh */; };
-		B20868FD1559E2D800D14DA6 /* PXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20868FC1559E2D800D14DA6 /* PXViewController.m */; };
 		B20868FD1559E2D800D14DA6 /* PXViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B20868FC1559E2D800D14DA6 /* PXViewController.mm */; };
 		B20869001559E2D800D14DA6 /* PXViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20868FE1559E2D800D14DA6 /* PXViewController.xib */; };
 		B20869091559E35C00D14DA6 /* PXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20869061559E35C00D14DA6 /* PXMainViewController.m */; };
@@ -27,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4AAD4269155EF5870002F2F5 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
+		4AAD426A155EF5870002F2F5 /* Sprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Sprite.mm; sourceTree = "<group>"; };
+		4AAD426B155EF5870002F2F5 /* Vector2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2D.h; sourceTree = "<group>"; };
 		B20868DB1559E2D800D14DA6 /* pixel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pixel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B20868DF1559E2D800D14DA6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B20868E11559E2D800D14DA6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -43,7 +46,6 @@
 		B20868F71559E2D800D14DA6 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
 		B20868F91559E2D800D14DA6 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
 		B20868FB1559E2D800D14DA6 /* PXViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXViewController.h; sourceTree = "<group>"; };
-		B20868FC1559E2D800D14DA6 /* PXViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXViewController.m; sourceTree = "<group>"; };
 		B20868FC1559E2D800D14DA6 /* PXViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = PXViewController.mm; sourceTree = "<group>"; };
 		B20868FF1559E2D800D14DA6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PXViewController.xib; sourceTree = "<group>"; };
 		B20869061559E35C00D14DA6 /* PXMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXMainViewController.m; sourceTree = "<group>"; };
@@ -107,11 +109,13 @@
 				B20869061559E35C00D14DA6 /* PXMainViewController.m */,
 				B20869071559E35C00D14DA6 /* PXMainViewController.xib */,
 				B20868FB1559E2D800D14DA6 /* PXViewController.h */,
-				B20868FC1559E2D800D14DA6 /* PXViewController.m */,
 				B20868FC1559E2D800D14DA6 /* PXViewController.mm */,
 				B20868FE1559E2D800D14DA6 /* PXViewController.xib */,
 				B20868F71559E2D800D14DA6 /* Shader.fsh */,
 				B20868F91559E2D800D14DA6 /* Shader.vsh */,
+				4AAD4269155EF5870002F2F5 /* Sprite.h */,
+				4AAD426A155EF5870002F2F5 /* Sprite.mm */,
+				4AAD426B155EF5870002F2F5 /* Vector2D.h */,
 				B20868EA1559E2D800D14DA6 /* Supporting Files */,
 			);
 			path = pixel;
@@ -208,9 +212,9 @@
 			files = (
 				B20868F01559E2D800D14DA6 /* main.m in Sources */,
 				B20868F41559E2D800D14DA6 /* PXAppDelegate.m in Sources */,
-				B20868FD1559E2D800D14DA6 /* PXViewController.m in Sources */,
 				B20868FD1559E2D800D14DA6 /* PXViewController.mm in Sources */,
 				B20869091559E35C00D14DA6 /* PXMainViewController.m in Sources */,
+				4AAD426C155EF5870002F2F5 /* Sprite.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +328,7 @@
 				B20869051559E2D800D14DA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
