@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 pixel. All rights reserved.
 //
 
-varying lowp vec4 colorVarying;
+varying lowp vec4 vertexColor;
 
 void main()
 {
-    gl_FragColor = colorVarying;
+    gl_FragColor = vertexColor;
 }
