@@ -13,6 +13,7 @@
 #include "Sprite.h"
 #include "IObstacle.h"
 #include <deque>
+#include "Atlas.h"
 
 #define WIDTH 320
 #define HEIGHT 480
@@ -54,6 +55,8 @@ protected:
     std::deque<IObstacle *> _obstacles;
     float _speed;
     float _nextSpawn;
+    
+    Atlas* _atlas;
     
     virtual void SetMode(RocketMode mode);
 };

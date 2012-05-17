@@ -22,6 +22,9 @@ void QuadDemoScene::Init()
     // Obstacles
     _speed = 1;
     _nextSpawn = 0;
+    
+    _atlas = new Atlas(@"atlas.bin");
+    
 }
 
 void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
@@ -60,7 +63,7 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
     {
         NSLog(@"Spawning at Speed: %f", _speed);
         Asteroid* newChallenger = new Asteroid();
-        newChallenger->Init();
+        newChallenger->Init(_atlas);
         _obstacles.push_back(newChallenger);
         
         _nextSpawn = GetTime() + SPAWN_DELAY_MIN + arc4random() % SPAWN_DELAY_RANDOM;
@@ -72,22 +75,38 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
 
 void QuadDemoScene::Draw()
 {
+    glClearColor(0.0f, 0.0f, 0.1f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glDisable(GL_DEPTH_TEST);
+    
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+    
+    
     Sprite::SetColor4f(1.0, 1.0, 1.0, 1.0);
+    
+
+    
+    AtlasCut* cut = _atlas->getCut("rocket");
+    
+    //printf("%s %f %f %f %f %f %f\n", cut->name, cut->width, cut->height, cut->texX, cut->texY, cut->texW, cut->texH);
+    
+    // Rocket
+    Sprite::Draw(Vector2D(_posX, _posY), cut->width * 0.5, cut->height * 0.5, (_targetX - _posX) / 60, 
+                 cut->texX, cut->texY, cut->texW, cut->texH);
     
     // Obstacles
     /*for (int x = 0; x < 8; x++)
-    {
-        for (int y = 0; y < 7; y++)
-        {            
-            float rot = _rotation * (x + y) * 0.25;
-            Sprite::Draw(Vector2D(22 + x * 40, 30 + y * 40), 15, 15, rot, x/3.0, y/3.0, 1.0/3.0, 1.0/3.0);
-        }
-    }*/
+     {
+     for (int y = 0; y < 7; y++)
+     {            
+     float rot = _rotation * (x + y) * 0.25;
+     Sprite::Draw(Vector2D(22 + x * 40, 30 + y * 40), 15, 15, rot, x/3.0, y/3.0, 1.0/3.0, 1.0/3.0);
+     }
+     }*/
     for (std::deque<IObstacle *>::iterator i = _obstacles.begin(); i != _obstacles.end(); ++i)
         (*i)->Draw();
     
-    // Rocket
-    Sprite::Draw(Vector2D(_posX, _posY), 15, 25, (_targetX - _posX) / 50, 0, 0, 1, 1);
     
     Sprite::Flush();
 }

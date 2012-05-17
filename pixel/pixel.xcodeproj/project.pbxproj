@@ -11,6 +11,7 @@
 		4A1303E3156512E40096FB90 /* Space.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A1303E2156512E40096FB90 /* Space.png */; };
 		4A850D371565924E0003CE97 /* atlas.bin in Resources */ = {isa = PBXBuildFile; fileRef = 4A850D351565924E0003CE97 /* atlas.bin */; };
 		4A850D381565924E0003CE97 /* atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A850D361565924E0003CE97 /* atlas.png */; };
+		4A850D41156593BC0003CE97 /* Atlas.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4A850D40156593BC0003CE97 /* Atlas.mm */; };
 		4AAD426C155EF5870002F2F5 /* Sprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4AAD426A155EF5870002F2F5 /* Sprite.mm */; };
 		B20868E01559E2D800D14DA6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20868DF1559E2D800D14DA6 /* UIKit.framework */; };
 		B20868E21559E2D800D14DA6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20868E11559E2D800D14DA6 /* Foundation.framework */; };
@@ -40,6 +41,8 @@
 		4A1303E2156512E40096FB90 /* Space.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Space.png; path = textures/Space.png; sourceTree = "<group>"; };
 		4A850D351565924E0003CE97 /* atlas.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; name = atlas.bin; path = textures/atlas.bin; sourceTree = "<group>"; };
 		4A850D361565924E0003CE97 /* atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = atlas.png; path = textures/atlas.png; sourceTree = "<group>"; };
+		4A850D3E156593AC0003CE97 /* Atlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Atlas.h; sourceTree = "<group>"; };
+		4A850D40156593BC0003CE97 /* Atlas.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Atlas.mm; sourceTree = "<group>"; };
 		4AAD4269155EF5870002F2F5 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
 		4AAD426A155EF5870002F2F5 /* Sprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Sprite.mm; sourceTree = "<group>"; };
 		4AAD426B155EF5870002F2F5 /* Vector2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2D.h; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 				4A1303DF1565118A0096FB90 /* Texture2D.m */,
 				4A1303E4156512F00096FB90 /* Textures */,
 				B20868EA1559E2D800D14DA6 /* Supporting Files */,
+				4A850D3E156593AC0003CE97 /* Atlas.h */,
+				4A850D40156593BC0003CE97 /* Atlas.mm */,
 			);
 			path = pixel;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 				4A1303E01565118A0096FB90 /* Texture2D.m in Sources */,
 				B242163215652EAE004C049B /* PXGestureRecognizer.mm in Sources */,
 				B2A3B88A156552A10054672D /* Asteroid.mm in Sources */,
+				4A850D41156593BC0003CE97 /* Atlas.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,11 +11,14 @@
 
 #include "IObstacle.h"
 
-class Asteroid : public IObstacle
+
+  class Asteroid : public IObstacle
 {
+    static AtlasCut* _spriteCut;
+    
 public:
     virtual ~Asteroid();
-	virtual void Init();
+	virtual void Init(Atlas*);
     virtual void Update(NSTimeInterval timeSinceLastUpdate, float speed);
     virtual void Draw();
     virtual bool IsDead();
