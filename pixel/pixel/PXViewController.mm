@@ -74,7 +74,7 @@ GLint uniforms[NUM_UNIFORMS];
     [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
     
-    texture = [[Texture2D alloc] initWithImage:[UIImage imageNamed:@"Space.png"]];
+    texture = [[Texture2D alloc] initWithImage:[UIImage imageNamed:@"atlas.png"]];
         
     _sceneManager = new SceneManager();
     _sceneManager->AddScene(new QuadDemoScene());
@@ -175,9 +175,6 @@ GLint uniforms[NUM_UNIFORMS];
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
     _modelViewProjectionMatrix = GLKMatrix4MakeOrtho(0, rect.size.width, rect.size.height, 0, -10, 10);
-    glClearColor(0.5f, 0.5f, 0.9f, 1.0f);
-    //glClearColor(0.1f, 0.1f, 0.2f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     
     //Render the object again with ES2

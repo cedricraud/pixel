@@ -13,11 +13,12 @@
 #include "Sprite.h"
 #include "IObstacle.h"
 #include <deque>
+#include "Atlas.h"
 
 #define WIDTH 320
 #define HEIGHT 480
 #define POSY_DEFAULT 410
-#define DASH_INPUT_DELAY 200.f
+#define DASH_INPUT_DELAY 300.f
 #define DASH_AMPLITUDE 100.f
 #define DASH_TIME 400.f
 #define SPAWN_DELAY_MIN 200
@@ -60,6 +61,7 @@ protected:
     float _pathTargetPosX;
     float _pathSize;
     long  _pathLastMove;
+    Atlas* _atlas;
     
     virtual void SetMode(RocketMode mode);
 };

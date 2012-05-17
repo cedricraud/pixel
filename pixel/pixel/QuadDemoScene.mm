@@ -22,12 +22,15 @@ void QuadDemoScene::Init()
     // Path
     _pathPosX = 172;
     _pathTargetPosX = _pathPosX;
-    _pathSize = 30;
+    _pathSize = 40;
     _pathLastMove = 0;
     
     // Obstacles
     _speed = 1;
     _nextSpawn = 0;
+    
+    _atlas = new Atlas(@"atlas.bin");
+    
 }
 
 void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
@@ -56,12 +59,12 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
     }
     
     // Path
-    _pathPosX = _pathPosX * 0.9 + _pathTargetPosX * 0.1;
+    _pathPosX = _pathPosX * 0.95 + _pathTargetPosX * 0.05;
     if (GetTime() - _pathLastMove > PATH_MOVE_DELAY)
     {
         _pathTargetPosX = 20 + RANDOM * 280;
         _pathLastMove = GetTime() + PATH_MOVE_DELAY;
-        NSLog(@"Path Move: %f", _pathTargetPosX);
+        //NSLog(@"Path Move: %f", _pathTargetPosX);
     }
     
     // Obstacles
@@ -73,9 +76,9 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
     
     if (GetTime() > _nextSpawn)
     {
-        NSLog(@"Spawning at Speed: %f", _speed);
+        //NSLog(@"Spawning at Speed: %f", _speed);
         Asteroid* newChallenger = new Asteroid();
-        newChallenger->Init(_pathPosX, _pathSize);
+        newChallenger->Init(_atlas, _pathPosX, _pathSize);
         _obstacles.push_back(newChallenger);
         
         _nextSpawn = GetTime() + (SPAWN_DELAY_MIN + arc4random() % SPAWN_DELAY_RANDOM) / _speed;
@@ -87,13 +90,23 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
 
 void QuadDemoScene::Draw()
 {
+    glClearColor(0.0f, 0.0f, 0.1f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glDisable(GL_DEPTH_TEST);
+    
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+    
+    
     Sprite::SetColor4f(1.0, 1.0, 1.0, 1.0);
     
     // Rocket
-    Sprite::Draw(Vector2D(_posX, _posY), 15, 25, (_targetX - _posX) / 50, 0, 0, 1, 1);
-
+    AtlasCut* cut = _atlas->getCut("rocket");
+    Sprite::Draw(Vector2D(_posX, _posY), cut->width * 0.5, cut->height * 0.5, (_targetX - _posX) / 60,
+                 cut->texX, cut->texY, cut->texW, cut->texH);
     // Path
-    Sprite::Draw(Vector2D(_pathPosX - _pathSize / 2, 0), _pathSize, 10, 0, 0, 0, 0.1, 0.1);
+    cut = _atlas->getCut("coin");
+    Sprite::Draw(Vector2D(_pathPosX - _pathSize / 2, 0), _pathSize, 5, 0, cut->texX, cut->texY, cut->texW, cut->texH);
     
     // Obstacles
     for (std::deque<IObstacle *>::iterator i = _obstacles.begin(); i != _obstacles.end(); ++i)
