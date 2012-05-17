@@ -9,12 +9,15 @@
 #include "Asteroid.h"
 #include "Sprite.h"
 
-void Asteroid::Init()
+void Asteroid::Init(float pathPosX, float pathSize)
 {
-    _posX = LIMIT_LEFT + RANDOM * (LIMIT_RIGHT - LIMIT_LEFT);
+    _scale = 1 + RANDOM * 0.3;
+    _size =_scale * 15;
+    do {
+            _posX = LIMIT_LEFT + RANDOM * (LIMIT_RIGHT - LIMIT_LEFT);
+    } while (abs(_posX - pathPosX) < pathSize / 2 + _size / 2);
     _posY = -50;
     _velY = 200;
-    _scale = 0.7 + RANDOM * 0.6;
     _dead = false;
     _rotation = arc4random() % 5;
     _velRotation = 1 + RANDOM * 0.5;
@@ -31,7 +34,7 @@ void Asteroid::Update(NSTimeInterval timeSinceLastUpdate, float speed)
 
 void Asteroid::Draw()
 {
-    Sprite::Draw(Vector2D(_posX, _posY), _scale * 20, _scale * 20, _rotation, 0, 0, 1, 1);
+    Sprite::Draw(Vector2D(_posX, _posY), _size, _size, _rotation, 0, 0, 1, 1);
 }
 
 bool Asteroid::IsDead()

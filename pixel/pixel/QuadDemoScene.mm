@@ -19,6 +19,12 @@ void QuadDemoScene::Init()
     _posY = POSY_DEFAULT;
     _mode = NORMAL;
     
+    // Path
+    _pathPosX = 172;
+    _pathTargetPosX = _pathPosX;
+    _pathSize = 30;
+    _pathLastMove = 0;
+    
     // Obstacles
     _speed = 1;
     _nextSpawn = 0;
@@ -49,6 +55,15 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
             break;
     }
     
+    // Path
+    _pathPosX = _pathPosX * 0.9 + _pathTargetPosX * 0.1;
+    if (GetTime() - _pathLastMove > PATH_MOVE_DELAY)
+    {
+        _pathTargetPosX = 20 + RANDOM * 280;
+        _pathLastMove = GetTime() + PATH_MOVE_DELAY;
+        NSLog(@"Path Move: %f", _pathTargetPosX);
+    }
+    
     // Obstacles
     if (_speed < SPEED_MAX)
         _speed += timeSinceLastUpdate * SPEED_ACC;
@@ -60,10 +75,10 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
     {
         NSLog(@"Spawning at Speed: %f", _speed);
         Asteroid* newChallenger = new Asteroid();
-        newChallenger->Init();
+        newChallenger->Init(_pathPosX, _pathSize);
         _obstacles.push_back(newChallenger);
         
-        _nextSpawn = GetTime() + SPAWN_DELAY_MIN + arc4random() % SPAWN_DELAY_RANDOM;
+        _nextSpawn = GetTime() + (SPAWN_DELAY_MIN + arc4random() % SPAWN_DELAY_RANDOM) / _speed;
     }
 
     for (std::deque<IObstacle *>::iterator i = _obstacles.begin(); i != _obstacles.end(); ++i)
@@ -74,21 +89,16 @@ void QuadDemoScene::Draw()
 {
     Sprite::SetColor4f(1.0, 1.0, 1.0, 1.0);
     
-    // Obstacles
-    /*for (int x = 0; x < 8; x++)
-    {
-        for (int y = 0; y < 7; y++)
-        {            
-            float rot = _rotation * (x + y) * 0.25;
-            Sprite::Draw(Vector2D(22 + x * 40, 30 + y * 40), 15, 15, rot, x/3.0, y/3.0, 1.0/3.0, 1.0/3.0);
-        }
-    }*/
-    for (std::deque<IObstacle *>::iterator i = _obstacles.begin(); i != _obstacles.end(); ++i)
-        (*i)->Draw();
-    
     // Rocket
     Sprite::Draw(Vector2D(_posX, _posY), 15, 25, (_targetX - _posX) / 50, 0, 0, 1, 1);
+
+    // Path
+    Sprite::Draw(Vector2D(_pathPosX - _pathSize / 2, 0), _pathSize, 10, 0, 0, 0, 0.1, 0.1);
     
+    // Obstacles
+    for (std::deque<IObstacle *>::iterator i = _obstacles.begin(); i != _obstacles.end(); ++i)
+        (*i)->Draw();
+        
     Sprite::Flush();
 }
 

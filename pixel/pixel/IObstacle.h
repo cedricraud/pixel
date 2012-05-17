@@ -17,7 +17,7 @@ class IObstacle
 {
 public:
     virtual ~IObstacle() {}
-	virtual void Init() = 0;
+	virtual void Init(float pathPosX, float pathSize) = 0;
     virtual void Update(NSTimeInterval timeSinceLastUpdate, float speed) = 0;
     virtual void Draw() = 0;
     virtual bool IsDead() = 0;

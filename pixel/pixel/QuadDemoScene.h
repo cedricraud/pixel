@@ -20,10 +20,11 @@
 #define DASH_INPUT_DELAY 200.f
 #define DASH_AMPLITUDE 100.f
 #define DASH_TIME 400.f
-#define SPAWN_DELAY_MIN 150
-#define SPAWN_DELAY_RANDOM 300
-#define SPEED_ACC 0.040
+#define SPAWN_DELAY_MIN 200
+#define SPAWN_DELAY_RANDOM 200
+#define SPEED_ACC 0.06
 #define SPEED_MAX 4.f
+#define PATH_MOVE_DELAY 500
 
 enum RocketMode
 {
@@ -54,6 +55,11 @@ protected:
     std::deque<IObstacle *> _obstacles;
     float _speed;
     float _nextSpawn;
+    
+    float _pathPosX;
+    float _pathTargetPosX;
+    float _pathSize;
+    long  _pathLastMove;
     
     virtual void SetMode(RocketMode mode);
 };

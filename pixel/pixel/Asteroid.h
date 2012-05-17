@@ -15,7 +15,7 @@ class Asteroid : public IObstacle
 {
 public:
     virtual ~Asteroid();
-	virtual void Init();
+	virtual void Init(float pathPosX, float pathSize);
     virtual void Update(NSTimeInterval timeSinceLastUpdate, float speed);
     virtual void Draw();
     virtual bool IsDead();
@@ -25,6 +25,7 @@ protected:
     float _posY;
     float _velY;
     float _scale;
+    float _size;
     float _rotation;
     float _velRotation;
 };
