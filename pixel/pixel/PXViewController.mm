@@ -176,6 +176,7 @@ GLint uniforms[NUM_UNIFORMS];
 {
     _modelViewProjectionMatrix = GLKMatrix4MakeOrtho(0, rect.size.width, rect.size.height, 0, -10, 10);
     glClearColor(0.5f, 0.5f, 0.9f, 1.0f);
+    //glClearColor(0.1f, 0.1f, 0.2f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     

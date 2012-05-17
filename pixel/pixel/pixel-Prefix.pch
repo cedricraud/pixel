@@ -12,3 +12,5 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#define RANDOM (arc4random() % 1000 / 1000.f)

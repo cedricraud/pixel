@@ -17,9 +17,7 @@
 
 - (id)initWithSceneManager:(SceneManager *)sceneManager {
     if (self = [super init])
-    {
         _sceneManager = sceneManager;
-    }
     return self;
 }
 
