@@ -229,23 +229,18 @@ void Sprite::Flush()
 {
 	if (iBufLen)
 	{
-		glEnableClientState(GL_VERTEX_ARRAY);
-		glDisableClientState(GL_NORMAL_ARRAY);
-		glEnableClientState(GL_COLOR_ARRAY);
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
         
         glEnableVertexAttribArray(GLKVertexAttribPosition);
         glDisableVertexAttribArray(GLKVertexAttribNormal);
-        glEnableVertexAttribArray(GLKVertexAttribColor);
+        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
+		glEnableVertexAttribArray(GLKVertexAttribColor);
+
+        //glEnable(GL_TEXTURE_2D);
         
-        //glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
-		//glEnable(GL_TEXTURE_2D);
-        
-        glDisableVertexAttribArray(GLKVertexAttribTexCoord0);
 		glDisable(GL_TEXTURE_2D);
 		
 		glVertexAttribPointer(GLKVertexAttribPosition,  2, GL_FLOAT, GL_FALSE, sizeof(vertex_s), pSpriteGeom);
-		//glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, sizeof(vertex_s), (char*)pSpriteGeom + 8);
+		glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, sizeof(vertex_s), (char*)pSpriteGeom + 8);
 		glVertexAttribPointer(GLKVertexAttribColor, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(vertex_s), (char*)pSpriteGeom + 16);
 		
 		glDrawElements(GL_TRIANGLES, iBufLen * 6, GL_UNSIGNED_SHORT, pSpriteIndices);

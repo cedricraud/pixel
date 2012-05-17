@@ -7,8 +7,12 @@
 //
 
 attribute vec4 position;
+attribute vec2 tex0;
 attribute vec4 color;
 
+
+
+varying lowp vec2 texCoords0;
 varying lowp vec4 vertexColor;
 
 uniform mat4 modelViewProjectionMatrix;
@@ -25,6 +29,7 @@ void main()
     float nDotVP = max(0.0, dot(eyeNormal, normalize(lightPosition)));
 */
     
+    texCoords0  = tex0;
     vertexColor = color;
     gl_Position = modelViewProjectionMatrix * position;
 }
