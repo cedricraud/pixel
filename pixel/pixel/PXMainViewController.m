@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self doAction:nil];
 }
 
 - (IBAction)doAction:(id)sender

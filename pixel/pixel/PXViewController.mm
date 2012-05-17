@@ -8,6 +8,8 @@
 
 #import "PXViewController.h"
 #import "Sprite.h"
+#import "SceneManager.h"
+#import "QuadDemoScene.h"
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
 // Uniform index.
@@ -27,10 +29,11 @@ GLint uniforms[NUM_UNIFORMS];
     
     GLKMatrix4 _modelViewProjectionMatrix;
     GLKMatrix3 _normalMatrix;
-    float _rotation;
     
     GLuint _vertexArray;
     GLuint _vertexBuffer;
+    
+    SceneManager* _sceneManager;
 }
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) GLKBaseEffect *effect;
@@ -66,7 +69,10 @@ GLint uniforms[NUM_UNIFORMS];
     [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
     
-    Sprite::Init();
+    //Sprite::Init();
+    _sceneManager = new SceneManager();
+    _sceneManager->AddScene(new QuadDemoScene());
+    _sceneManager->SetScene(0);
 }
 
 - (void)viewDidUnload
@@ -96,6 +102,14 @@ GLint uniforms[NUM_UNIFORMS];
     }
 }
 
+/*- (void)touchesBegin:(NSSet *)touches withEvent:(UIEvent *)event {
+    for (UITouch *touch in touches)
+    {
+        CGPoint location = [touch locationInView:self.view];
+        NSLog(@"PosX: %f PosY: %f", location.x, location.y);
+    }
+}*/
+
 - (void)setupGL
 {
     [EAGLContext setCurrentContext:self.context];
@@ -119,7 +133,7 @@ GLint uniforms[NUM_UNIFORMS];
 
 - (void)update
 {
-    float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
+    //float aspect = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
     //GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0f), aspect, 0.1f, 100.0f);
     
     /*
@@ -143,10 +157,11 @@ GLint uniforms[NUM_UNIFORMS];
     _normalMatrix = GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(modelViewMatrix), NULL);
     
     _modelViewProjectionMatrix = GLKMatrix4Multiply(projectionMatrix, modelViewMatrix);
-     */
 
+    _rotation += self.timeSinceLastUpdate * 0.5f;*/
     
-    _rotation += self.timeSinceLastUpdate * 0.5f;
+    IScene* scene = _sceneManager->GetScene();
+    if (scene != NULL) scene->Update(self.timeSinceLastUpdate);
 }
 
 -(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
@@ -168,7 +183,7 @@ GLint uniforms[NUM_UNIFORMS];
     
     glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, 0, _modelViewProjectionMatrix.m);
     
-    for (int x = 0; x < 8; x++)
+    /*for (int x = 0; x < 8; x++)
     {
         for (int y = 0; y < 9; y++)
         {
@@ -177,7 +192,10 @@ GLint uniforms[NUM_UNIFORMS];
             Sprite::Draw(Vector2D(22 + x * 40, 30 + y * 40), 15, 15, rot, 0, 0, 0, 0);
         }
     }
-    Sprite::Flush();
+    Sprite::Flush();*/
+    
+    IScene* scene = _sceneManager->GetScene();
+    if (scene != NULL) scene->Draw();
 }
 
 #pragma mark -  OpenGL ES 2 shader compilation

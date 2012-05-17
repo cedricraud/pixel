@@ -24,6 +24,8 @@
 		B20869091559E35C00D14DA6 /* PXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20869061559E35C00D14DA6 /* PXMainViewController.m */; };
 		B208690A1559E35C00D14DA6 /* PXMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20869071559E35C00D14DA6 /* PXMainViewController.xib */; };
 		B208690D1559E5E800D14DA6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B208690C1559E5E800D14DA6 /* Icon@2x.png */; };
+		B2C4B6D4156512DC000FBF14 /* QuadDemoScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2C4B6D3156512DC000FBF14 /* QuadDemoScene.mm */; };
+		B2C4B6D81565179E000FBF14 /* SceneManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2C4B6D61565179E000FBF14 /* SceneManager.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,11 @@
 		B20869071559E35C00D14DA6 /* PXMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PXMainViewController.xib; sourceTree = "<group>"; };
 		B20869081559E35C00D14DA6 /* PXMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXMainViewController.h; sourceTree = "<group>"; };
 		B208690C1559E5E800D14DA6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "pixel/Icon@2x.png"; sourceTree = "<group>"; };
+		B2C4B6D11565107F000FBF14 /* IScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IScene.h; sourceTree = "<group>"; };
+		B2C4B6D2156511F0000FBF14 /* QuadDemoScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuadDemoScene.h; sourceTree = "<group>"; };
+		B2C4B6D3156512DC000FBF14 /* QuadDemoScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QuadDemoScene.mm; sourceTree = "<group>"; };
+		B2C4B6D5156516A8000FBF14 /* SceneManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneManager.h; sourceTree = "<group>"; };
+		B2C4B6D61565179E000FBF14 /* SceneManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SceneManager.mm; path = ../SceneManager.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,19 +110,24 @@
 		B20868E91559E2D800D14DA6 /* pixel */ = {
 			isa = PBXGroup;
 			children = (
+				B20868FB1559E2D800D14DA6 /* PXViewController.h */,
+				B20868FC1559E2D800D14DA6 /* PXViewController.mm */,
+				B20868FE1559E2D800D14DA6 /* PXViewController.xib */,
 				B20868F21559E2D800D14DA6 /* PXAppDelegate.h */,
 				B20868F31559E2D800D14DA6 /* PXAppDelegate.m */,
 				B20869081559E35C00D14DA6 /* PXMainViewController.h */,
 				B20869061559E35C00D14DA6 /* PXMainViewController.m */,
 				B20869071559E35C00D14DA6 /* PXMainViewController.xib */,
-				B20868FB1559E2D800D14DA6 /* PXViewController.h */,
-				B20868FC1559E2D800D14DA6 /* PXViewController.mm */,
-				B20868FE1559E2D800D14DA6 /* PXViewController.xib */,
 				B20868F71559E2D800D14DA6 /* Shader.fsh */,
 				B20868F91559E2D800D14DA6 /* Shader.vsh */,
 				4AAD4269155EF5870002F2F5 /* Sprite.h */,
 				4AAD426A155EF5870002F2F5 /* Sprite.mm */,
 				4AAD426B155EF5870002F2F5 /* Vector2D.h */,
+				B2C4B6D5156516A8000FBF14 /* SceneManager.h */,
+				B2C4B6D61565179E000FBF14 /* SceneManager.mm */,
+				B2C4B6D2156511F0000FBF14 /* QuadDemoScene.h */,
+				B2C4B6D3156512DC000FBF14 /* QuadDemoScene.mm */,
+				B2C4B6D11565107F000FBF14 /* IScene.h */,
 				B20868EA1559E2D800D14DA6 /* Supporting Files */,
 			);
 			path = pixel;
@@ -215,6 +227,8 @@
 				B20868FD1559E2D800D14DA6 /* PXViewController.mm in Sources */,
 				B20869091559E35C00D14DA6 /* PXMainViewController.m in Sources */,
 				4AAD426C155EF5870002F2F5 /* Sprite.mm in Sources */,
+				B2C4B6D4156512DC000FBF14 /* QuadDemoScene.mm in Sources */,
+				B2C4B6D81565179E000FBF14 /* SceneManager.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
