@@ -26,6 +26,7 @@
 		B20869091559E35C00D14DA6 /* PXMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B20869061559E35C00D14DA6 /* PXMainViewController.m */; };
 		B208690A1559E35C00D14DA6 /* PXMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B20869071559E35C00D14DA6 /* PXMainViewController.xib */; };
 		B208690D1559E5E800D14DA6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B208690C1559E5E800D14DA6 /* Icon@2x.png */; };
+		B242163215652EAE004C049B /* PXGestureRecognizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = B242163115652EAE004C049B /* PXGestureRecognizer.mm */; };
 		B2C4B6D4156512DC000FBF14 /* QuadDemoScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2C4B6D3156512DC000FBF14 /* QuadDemoScene.mm */; };
 		B2C4B6D81565179E000FBF14 /* SceneManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2C4B6D61565179E000FBF14 /* SceneManager.mm */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,8 @@
 		B20869071559E35C00D14DA6 /* PXMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PXMainViewController.xib; sourceTree = "<group>"; };
 		B20869081559E35C00D14DA6 /* PXMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXMainViewController.h; sourceTree = "<group>"; };
 		B208690C1559E5E800D14DA6 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "pixel/Icon@2x.png"; sourceTree = "<group>"; };
+		B242163015652EAE004C049B /* PXGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXGestureRecognizer.h; sourceTree = "<group>"; };
+		B242163115652EAE004C049B /* PXGestureRecognizer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PXGestureRecognizer.mm; sourceTree = "<group>"; };
 		B2C4B6D11565107F000FBF14 /* IScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IScene.h; sourceTree = "<group>"; };
 		B2C4B6D2156511F0000FBF14 /* QuadDemoScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuadDemoScene.h; sourceTree = "<group>"; };
 		B2C4B6D3156512DC000FBF14 /* QuadDemoScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QuadDemoScene.mm; sourceTree = "<group>"; };
@@ -143,6 +146,8 @@
 				B2C4B6D11565107F000FBF14 /* IScene.h */,
 				4A1303DE1565118A0096FB90 /* Texture2D.h */,
 				4A1303DF1565118A0096FB90 /* Texture2D.m */,
+				B242163015652EAE004C049B /* PXGestureRecognizer.h */,
+				B242163115652EAE004C049B /* PXGestureRecognizer.mm */,
 				4A1303E4156512F00096FB90 /* textures */,
 				B20868EA1559E2D800D14DA6 /* Supporting Files */,
 			);
@@ -247,6 +252,7 @@
 				B2C4B6D4156512DC000FBF14 /* QuadDemoScene.mm in Sources */,
 				B2C4B6D81565179E000FBF14 /* SceneManager.mm in Sources */,
 				4A1303E01565118A0096FB90 /* Texture2D.m in Sources */,
+				B242163215652EAE004C049B /* PXGestureRecognizer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

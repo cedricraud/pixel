@@ -12,6 +12,19 @@
 #include "IScene.h"
 #include "Sprite.h"
 
+#define WIDTH 320
+#define HEIGHT 480
+#define POSY_DEFAULT 410
+#define DASH_INPUT_DELAY 500.f
+#define DASH_AMPLITUDE 100.f
+#define DASH_TIME 400.f
+
+enum RocketMode
+{
+    NORMAL,
+    DASH
+};
+
 class QuadDemoScene : public IScene
 {
 public:
@@ -19,10 +32,21 @@ public:
     virtual void Init();
     virtual void Update(NSTimeInterval timeSinceLastUpdate);
     virtual void Draw();
+    virtual void TouchBegan(double x, double y);
+    virtual void TouchMoved(double x, double y);
+    virtual void TouchEnded(double x, double y);
 
 protected:
+    RocketMode _mode;
+    long _dashStart;
+    long _lastMove;
     float _rotation;
-
+    float _posX;
+    float _posY;
+    float _targetX;
+    
+    virtual void SetMode(RocketMode mode);
 };
+
 
 #endif

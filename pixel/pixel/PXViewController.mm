@@ -11,6 +11,7 @@
 #import "SceneManager.h"
 #import "QuadDemoScene.h"
 #import "Texture2D.h"
+#import "PXGestureRecognizer.h"
 
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
@@ -74,10 +75,13 @@ GLint uniforms[NUM_UNIFORMS];
     [[UIAccelerometer sharedAccelerometer] setDelegate:self];
     
     texture = [[Texture2D alloc] initWithImage:[UIImage imageNamed:@"Space.png"]];
-    
+        
     _sceneManager = new SceneManager();
     _sceneManager->AddScene(new QuadDemoScene());
     _sceneManager->SetScene(0);
+    
+    PXGestureRecognizer* gestureRecognizer = [[PXGestureRecognizer alloc] initWithSceneManager:_sceneManager];
+    [self.view addGestureRecognizer:gestureRecognizer];
 }
 
 - (void)viewDidUnload
@@ -106,14 +110,6 @@ GLint uniforms[NUM_UNIFORMS];
         return YES;
     }
 }
-
-/*- (void)touchesBegin:(NSSet *)touches withEvent:(UIEvent *)event {
-    for (UITouch *touch in touches)
-    {
-        CGPoint location = [touch locationInView:self.view];
-        NSLog(@"PosX: %f PosY: %f", location.x, location.y);
-    }
-}*/
 
 - (void)setupGL
 {
