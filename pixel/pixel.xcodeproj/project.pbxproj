@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A1303E01565118A0096FB90 /* Texture2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1303DF1565118A0096FB90 /* Texture2D.m */; };
+		4A1303E3156512E40096FB90 /* Space.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A1303E2156512E40096FB90 /* Space.png */; };
 		4AAD426C155EF5870002F2F5 /* Sprite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4AAD426A155EF5870002F2F5 /* Sprite.mm */; };
 		B20868E01559E2D800D14DA6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20868DF1559E2D800D14DA6 /* UIKit.framework */; };
 		B20868E21559E2D800D14DA6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B20868E11559E2D800D14DA6 /* Foundation.framework */; };
@@ -29,6 +31,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A1303DE1565118A0096FB90 /* Texture2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture2D.h; sourceTree = "<group>"; };
+		4A1303DF1565118A0096FB90 /* Texture2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Texture2D.m; sourceTree = "<group>"; };
+		4A1303E2156512E40096FB90 /* Space.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Space.png; path = textures/Space.png; sourceTree = "<group>"; };
 		4AAD4269155EF5870002F2F5 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
 		4AAD426A155EF5870002F2F5 /* Sprite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Sprite.mm; sourceTree = "<group>"; };
 		4AAD426B155EF5870002F2F5 /* Vector2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2D.h; sourceTree = "<group>"; };
@@ -77,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A1303E4156512F00096FB90 /* textures */ = {
+			isa = PBXGroup;
+			children = (
+				4A1303E2156512E40096FB90 /* Space.png */,
+			);
+			name = textures;
+			sourceTree = "<group>";
+		};
 		B20868D01559E2D800D14DA6 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +126,7 @@
 				B20868FB1559E2D800D14DA6 /* PXViewController.h */,
 				B20868FC1559E2D800D14DA6 /* PXViewController.mm */,
 				B20868FE1559E2D800D14DA6 /* PXViewController.xib */,
+				4A1303E4156512F00096FB90 /* textures */,
 				B20868F21559E2D800D14DA6 /* PXAppDelegate.h */,
 				B20868F31559E2D800D14DA6 /* PXAppDelegate.m */,
 				B20869081559E35C00D14DA6 /* PXMainViewController.h */,
@@ -128,6 +142,8 @@
 				B2C4B6D2156511F0000FBF14 /* QuadDemoScene.h */,
 				B2C4B6D3156512DC000FBF14 /* QuadDemoScene.mm */,
 				B2C4B6D11565107F000FBF14 /* IScene.h */,
+				4A1303DE1565118A0096FB90 /* Texture2D.h */,
+				4A1303DF1565118A0096FB90 /* Texture2D.m */,
 				B20868EA1559E2D800D14DA6 /* Supporting Files */,
 			);
 			path = pixel;
@@ -212,6 +228,7 @@
 				B20869001559E2D800D14DA6 /* PXViewController.xib in Resources */,
 				B208690A1559E35C00D14DA6 /* PXMainViewController.xib in Resources */,
 				B208690D1559E5E800D14DA6 /* Icon@2x.png in Resources */,
+				4A1303E3156512E40096FB90 /* Space.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +246,7 @@
 				4AAD426C155EF5870002F2F5 /* Sprite.mm in Sources */,
 				B2C4B6D4156512DC000FBF14 /* QuadDemoScene.mm in Sources */,
 				B2C4B6D81565179E000FBF14 /* SceneManager.mm in Sources */,
+				4A1303E01565118A0096FB90 /* Texture2D.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

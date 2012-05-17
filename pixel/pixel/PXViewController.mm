@@ -10,6 +10,8 @@
 #import "Sprite.h"
 #import "SceneManager.h"
 #import "QuadDemoScene.h"
+#import "Texture2D.h"
+
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
 // Uniform index.
@@ -17,6 +19,7 @@ enum
 {
     UNIFORM_MODELVIEWPROJECTION_MATRIX,
     UNIFORM_NORMAL_MATRIX,
+    UNIFORM_TEXTURE,
     NUM_UNIFORMS
 };
 GLint uniforms[NUM_UNIFORMS];
@@ -34,6 +37,7 @@ GLint uniforms[NUM_UNIFORMS];
     GLuint _vertexBuffer;
     
     SceneManager* _sceneManager;
+    Texture2D* texture;
 }
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) GLKBaseEffect *effect;
@@ -73,6 +77,9 @@ GLint uniforms[NUM_UNIFORMS];
     _sceneManager = new SceneManager();
     _sceneManager->AddScene(new QuadDemoScene());
     _sceneManager->SetScene(0);
+    
+    
+    texture = [[Texture2D alloc] initWithImage:[UIImage imageNamed:@"Space.png"]];
 }
 
 - (void)viewDidUnload
@@ -174,22 +181,28 @@ GLint uniforms[NUM_UNIFORMS];
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
     _modelViewProjectionMatrix = GLKMatrix4MakeOrtho(0, rect.size.width, rect.size.height, 0, -10, 10);
-    glClearColor(0.f, 0.f, 0.f, 1.0f);
+    glClearColor(0.5f, 0.5f, 0.9f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     
     //Render the object again with ES2
     glUseProgram(_program);
+    [texture bind];
+    glUniform1i(uniforms[UNIFORM_TEXTURE], 0);  
+    
     
     glUniformMatrix4fv(uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX], 1, 0, _modelViewProjectionMatrix.m);
     
-    /*for (int x = 0; x < 8; x++)
+    Sprite::SetColor4f(1.0, 1.0, 1.0, 1.0);
+    /*
+    for (int x = 0; x < 8; x++)
     {
         for (int y = 0; y < 9; y++)
         {
-            Sprite::SetColor4f(0.1 + x * 0.1, 0.1 + y * 0.1, 0.5, 1.0);
+            //Sprite::SetColor4f(0.1 + x * 0.1, 0.1 + y * 0.1, 0.5, 1.0);
+
             float rot = _rotation * (x + y) * 0.25;
-            Sprite::Draw(Vector2D(22 + x * 40, 30 + y * 40), 15, 15, rot, 0, 0, 0, 0);
+            Sprite::Draw(Vector2D(22 + x * 40, 30 + y * 40), 15, 15, rot, x/3.0, y/3.0, 1.0/3.0, 1.0/3.0);
         }
     }
     Sprite::Flush();*/
@@ -231,8 +244,8 @@ GLint uniforms[NUM_UNIFORMS];
     // Bind attribute locations.
     // This needs to be done prior to linking.
     glBindAttribLocation(_program, GLKVertexAttribPosition, "position");
-    //glBindAttribLocation(_program, GLKVertexAttribNormal, "normal");
     glBindAttribLocation(_program, GLKVertexAttribColor, "color");
+    glBindAttribLocation(_program, GLKVertexAttribTexCoord0, "tex0");
     
     // Link program.
     if (![self linkProgram:_program]) {
@@ -257,6 +270,7 @@ GLint uniforms[NUM_UNIFORMS];
     // Get uniform locations.
     uniforms[UNIFORM_MODELVIEWPROJECTION_MATRIX] = glGetUniformLocation(_program, "modelViewProjectionMatrix");
     uniforms[UNIFORM_NORMAL_MATRIX] = glGetUniformLocation(_program, "normalMatrix");
+    uniforms[UNIFORM_TEXTURE] = glGetUniformLocation(_program, "texture");
     
     // Release vertex and fragment shaders.
     if (vertShader) {
