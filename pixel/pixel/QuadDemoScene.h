@@ -33,6 +33,19 @@ enum RocketMode
     DASH
 };
 
+
+struct bgkStar
+{
+    float x;
+    float y;
+    float sp;
+    float sc;
+    float a;
+};
+
+
+
+
 class QuadDemoScene : public IScene
 {
 public:
@@ -52,6 +65,10 @@ protected:
     float _posX;
     float _posY;
     float _targetX;
+    
+    
+    int         _numStars;
+    bgkStar*    _pStars;
     
     std::deque<IObstacle *> _obstacles;
     float _speed;
