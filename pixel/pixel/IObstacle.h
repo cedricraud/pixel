@@ -11,9 +11,7 @@
 
 #include "Atlas.h"
 
-#define LIMIT_LEFT 20
-#define LIMIT_RIGHT 280
-#define LIMIT_BOTTOM 520
+#define DEAD 520
 
 class IObstacle
 {
@@ -21,7 +19,7 @@ class IObstacle
     
 public:
     virtual ~IObstacle() {}
-	virtual void Init(Atlas* atlas, float pathPosX, float pathSize) = 0;
+	virtual void Init(Atlas* atlas, float left, float right) = 0;
     virtual void Update(NSTimeInterval timeSinceLastUpdate, float speed) = 0;
     virtual void Draw() = 0;
     virtual bool IsDead() = 0;

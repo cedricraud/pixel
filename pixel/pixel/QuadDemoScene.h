@@ -18,13 +18,14 @@
 #define WIDTH 320
 #define HEIGHT 480
 #define POSY_DEFAULT 410
-#define DASH_INPUT_DELAY 300.f
-#define DASH_AMPLITUDE 100.f
+#define DASH_INPUT_DELAY 500.f
+#define DASH_AMPLITUDE 50.f
 #define DASH_TIME 400.f
-#define SPAWN_DELAY_MIN 200
+#define SPAWN_DELAY_MIN 75
 #define SPAWN_DELAY_RANDOM 200
 #define SPEED_ACC 0.06
-#define SPEED_MAX 4.f
+#define SPEED_MAX 3.f
+#define PATH_SIZE 100
 #define PATH_MOVE_DELAY 500
 
 enum RocketMode

@@ -12,13 +12,11 @@
 #include "IObstacle.h"
 
 
-  class Asteroid : public IObstacle
+class Asteroid : public IObstacle
 {
-    static AtlasCut* _spriteCut;
-    
 public:
     virtual ~Asteroid();
-	virtual void Init(Atlas* atlas, float pathPosX, float pathSize);
+	virtual void Init(Atlas* atlas, float left, float right);
     virtual void Update(NSTimeInterval timeSinceLastUpdate, float speed);
     virtual void Draw();
     virtual bool IsDead();
@@ -31,6 +29,7 @@ protected:
     float _size;
     float _rotation;
     float _velRotation;
+    static AtlasCut* _spriteCut;
 };
 
 #endif /* defined(__pixel__Asteroid__) */
