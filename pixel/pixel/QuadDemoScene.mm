@@ -27,9 +27,25 @@ void QuadDemoScene::Init()
     
     // Obstacles
     _speed = 1;
-    _nextSpawn = GetTime() + 1500;
+    _nextSpawnLeft = GetTime() + 1500;
+    _nextSpawnRight = GetTime() + 1500;
     
     _atlas = new Atlas(@"atlas.bin");
+    
+    _numStars = 150;
+    _pStars = new bgkStar[_numStars];
+    bgkStar* pStar = _pStars;
+    for (int i = 0; i < _numStars; i++)
+    {
+        pStar->x  = rand() % WIDTH - 5;
+        pStar->y  = rand() % HEIGHT;
+        
+        float sp = powf(((rand() % 100) / 100.0), 1.5);
+        pStar->sp = sp * 70.0 + 30.0;
+        pStar->sc = 0.3 + sp * 0.3;
+        pStar->a  = 0.2 + sp * 0.2;
+        pStar++;
+    }
     
 }
 
@@ -76,22 +92,41 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
     while(_obstacles.size() > 0 && _obstacles[0]->IsDead())
         _obstacles.pop_front(); // No pool yet
     
-    if (GetTime() > _nextSpawn)
+    if (GetTime() > _nextSpawnLeft)
     {
-        //NSLog(@"Spawning at Speed: %f", _speed);
         Asteroid* newChallenger = new Asteroid();
         newChallenger->Init(_atlas, 0.f, _pathPosX - _pathSize);
         _obstacles.push_back(newChallenger);
         
-        newChallenger = new Asteroid();
+        _nextSpawnLeft = GetTime() + (SPAWN_DELAY_MIN + arc4random() % SPAWN_DELAY_RANDOM) / _speed;
+    }
+    if (GetTime() > _nextSpawnRight)
+    {
+        Asteroid* newChallenger = new Asteroid();
         newChallenger->Init(_atlas, _pathPosX + _pathSize, WIDTH);
         _obstacles.push_back(newChallenger);
         
-        _nextSpawn = GetTime() + (SPAWN_DELAY_MIN + arc4random() % SPAWN_DELAY_RANDOM) / _speed;
+        _nextSpawnRight = GetTime() + (SPAWN_DELAY_MIN + arc4random() % SPAWN_DELAY_RANDOM) / _speed;
     }
 
     for (std::deque<IObstacle *>::iterator i = _obstacles.begin(); i != _obstacles.end(); ++i)
-        (*i)->Update(timeSinceLastUpdate, _speed + dashSin * 1);
+        (*i)->Update(timeSinceLastUpdate, _speed + dashSin * 0.75);
+    
+    
+    bgkStar* pStar = _pStars;
+    for (int i = 0; i < _numStars; i++)
+    {
+        
+        pStar->y += pStar->sp * timeSinceLastUpdate;
+        
+        if (pStar->y > HEIGHT)
+        {
+            pStar->y = 0;
+            pStar->x  = rand() % WIDTH - 5;   
+        }
+        
+        pStar++;
+    }
 }
 
 void QuadDemoScene::Draw()
@@ -100,7 +135,28 @@ void QuadDemoScene::Draw()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glDisable(GL_DEPTH_TEST);
     
+    
     glEnable(GL_BLEND);
+    
+    glBlendFunc(GL_ONE, GL_ONE);
+    
+    AtlasCut* starCut = _atlas->getCut("star3");
+    
+    bgkStar* pStar = _pStars;
+    Sprite::SetColor4f(0.3, 0.3, 0.3, 1.0);
+    
+    for (int i = 0; i < _numStars; i++)
+    {
+        float a = pStar->a;
+        float s = pStar->sc;
+        Sprite::SetColor4f(a * 0.7, a * 0.8, a, 1.0);
+        Sprite::Draw(pStar->x, pStar->y, starCut->width * s, starCut->height * s,
+                     starCut->texX, starCut->texY, starCut->texW, starCut->texH);
+        
+        pStar++;
+    }
+    
+    
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     
     
@@ -108,7 +164,7 @@ void QuadDemoScene::Draw()
     
     // Path
     AtlasCut* cut = _atlas->getCut("coin");
-    Sprite::Draw(Vector2D(_pathPosX, 2), _pathSize, 5, 0, cut->texX, cut->texY, cut->texW, cut->texH);
+    Sprite::Draw(Vector2D(_pathPosX, 2), _pathSize, 3, 0, cut->texX, cut->texY, cut->texW, cut->texH);
     
     // Obstacles
     for (std::deque<IObstacle *>::iterator i = _obstacles.begin(); i != _obstacles.end(); ++i)

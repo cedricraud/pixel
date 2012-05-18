@@ -21,8 +21,8 @@
 #define DASH_INPUT_DELAY 500.f
 #define DASH_AMPLITUDE 50.f
 #define DASH_TIME 400.f
-#define SPAWN_DELAY_MIN 75
-#define SPAWN_DELAY_RANDOM 200
+#define SPAWN_DELAY_MIN 20
+#define SPAWN_DELAY_RANDOM 100
 #define SPEED_ACC 0.06
 #define SPEED_MAX 3.f
 #define PATH_SIZE 100
@@ -33,6 +33,19 @@ enum RocketMode
     NORMAL,
     DASH
 };
+
+
+struct bgkStar
+{
+    float x;
+    float y;
+    float sp;
+    float sc;
+    float a;
+};
+
+
+
 
 class QuadDemoScene : public IScene
 {
@@ -54,9 +67,14 @@ protected:
     float _posY;
     float _targetX;
     
+    
+    int         _numStars;
+    bgkStar*    _pStars;
+    
     std::deque<IObstacle *> _obstacles;
     float _speed;
-    float _nextSpawn;
+    float _nextSpawnLeft;
+    float _nextSpawnRight;
     
     float _pathPosX;
     float _pathTargetPosX;
