@@ -18,7 +18,7 @@ void Asteroid::Init(Atlas* pAtlas, float left, float right)
     _posX = _size + left + RANDOM * (right - left - _size);
     //NSLog(@"Between %f and %f I pick %f with size %f", left, right, _posX, _size);
     _posY = -30;
-    _velY = 200;
+    _velY = 190 + RANDOM * 20;
     _dead = false;
     _rotation = arc4random() % 5;
     _velRotation = 0.5 + RANDOM * 2.0;

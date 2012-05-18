@@ -22,7 +22,7 @@
 #define DASH_AMPLITUDE 50.f
 #define DASH_TIME 400.f
 #define SPAWN_DELAY_MIN 20
-#define SPAWN_DELAY_RANDOM 100
+#define SPAWN_DELAY_RANDOM 150
 #define SPEED_ACC 0.06
 #define SPEED_MAX 3.f
 #define PATH_SIZE 100

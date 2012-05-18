@@ -164,7 +164,7 @@ void QuadDemoScene::Draw()
     
     // Path
     AtlasCut* cut = _atlas->getCut("coin");
-    Sprite::Draw(Vector2D(_pathPosX, 2), _pathSize, 3, 0, cut->texX, cut->texY, cut->texW, cut->texH);
+    //Sprite::Draw(Vector2D(_pathPosX, 2), _pathSize, 3, 0, cut->texX, cut->texY, cut->texW, cut->texH);
     
     // Obstacles
     for (std::deque<IObstacle *>::iterator i = _obstacles.begin(); i != _obstacles.end(); ++i)
@@ -172,7 +172,7 @@ void QuadDemoScene::Draw()
 
     // Rocket
     cut = _atlas->getCut("rocket");
-    Sprite::Draw(Vector2D(_posX, _posY), cut->width * 0.5, cut->height * 0.5, (_targetX - _posX) / 60,
+    Sprite::Draw(Vector2D(_posX, _posY), cut->width * 0.4, cut->height * 0.4, (_targetX - _posX) / 60,
                  cut->texX, cut->texY, cut->texW, cut->texH);
 
     Sprite::Flush();
