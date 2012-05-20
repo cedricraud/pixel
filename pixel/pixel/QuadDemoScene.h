@@ -21,12 +21,12 @@
 #define DASH_INPUT_DELAY 500.f
 #define DASH_AMPLITUDE 50.f
 #define DASH_TIME 400.f
-#define SPAWN_DELAY_MIN 20
+#define SPAWN_DELAY_MIN 50
 #define SPAWN_DELAY_RANDOM 150
 #define SPEED_ACC 0.06
 #define SPEED_MAX 3.f
 #define PATH_SIZE 100
-#define PATH_MOVE_DELAY 500
+#define PATH_MOVE_DELAY 400
 
 enum RocketMode
 {

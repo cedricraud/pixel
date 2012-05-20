@@ -94,17 +94,25 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
     
     if (GetTime() > _nextSpawnLeft)
     {
-        Asteroid* newChallenger = new Asteroid();
-        newChallenger->Init(_atlas, 0.f, _pathPosX - _pathSize);
-        _obstacles.push_back(newChallenger);
+        for (int i = 0; i < 1; i++)
+        {
+            Asteroid* newChallenger = new Asteroid();
+            //newChallenger->Init(_atlas, 0.f, _pathPosX - _pathSize);
+            newChallenger->Init(_atlas, i == 0 ? _pathPosX - _pathSize - 70 : 0, _pathPosX - _pathSize);
+            _obstacles.push_back(newChallenger);
+        }
         
         _nextSpawnLeft = GetTime() + (SPAWN_DELAY_MIN + arc4random() % SPAWN_DELAY_RANDOM) / _speed;
     }
     if (GetTime() > _nextSpawnRight)
     {
-        Asteroid* newChallenger = new Asteroid();
-        newChallenger->Init(_atlas, _pathPosX + _pathSize, WIDTH);
-        _obstacles.push_back(newChallenger);
+        for (int i = 0; i < 1; i++)
+        {
+            Asteroid* newChallenger = new Asteroid();
+            //newChallenger->Init(_atlas, _pathPosX + _pathSize, WIDTH);
+            newChallenger->Init(_atlas, _pathPosX + _pathSize, i == 0 ? _pathPosX + _pathSize + 70 : WIDTH);
+            _obstacles.push_back(newChallenger);
+        }
         
         _nextSpawnRight = GetTime() + (SPAWN_DELAY_MIN + arc4random() % SPAWN_DELAY_RANDOM) / _speed;
     }
