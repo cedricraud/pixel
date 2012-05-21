@@ -17,6 +17,7 @@ void QuadDemoScene::Init()
     _posX = 160;
     _targetX = _posX;
     _posY = POSY_DEFAULT;
+    _targetY = _posY;
     _mode = NORMAL;
     
     // Path
@@ -53,7 +54,8 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
 {
     // Rocket
     _rotation += timeSinceLastUpdate * 0.5f;
-    _posX = _posX * 0.4 + _targetX * 0.6;
+    _posX = _posX * 0.3 + _targetX * 0.7;
+    _posY = _posY * 0.1 + _targetY * 0.9;
     if (_posX < 30) _posX = 30;
     if (_posX > WIDTH - 30) _posX = WIDTH - 30;
     
@@ -63,10 +65,10 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
         case DASH:
             time = GetTime() - _dashStart;
             dashSin = sin(time / DASH_TIME * M_PI);
-            _posY = POSY_DEFAULT - dashSin * DASH_AMPLITUDE;
+            //_posY = POSY_DEFAULT - dashSin * DASH_AMPLITUDE;
             if (time > DASH_TIME)
             {
-                _posY = POSY_DEFAULT;
+               // _posY = POSY_DEFAULT;
                 this->SetMode(NORMAL);
             }
             break;
@@ -76,6 +78,7 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
     
     // Path
     _pathPosX = _pathPosX * 0.95 + _pathTargetPosX * 0.05;
+    
     if (GetTime() - _pathLastMove > PATH_MOVE_DELAY)
     {
         _pathTargetPosX = _pathSize + 1 + RANDOM * (WIDTH - _pathSize * 2 - 2);
@@ -213,6 +216,7 @@ void QuadDemoScene::TouchBegan(double x, double y)
 void QuadDemoScene::TouchMoved(double x, double y)
 {
     _targetX = x;
+    _targetY = y - 70;
 }
 
 void QuadDemoScene::TouchEnded(double x, double y)

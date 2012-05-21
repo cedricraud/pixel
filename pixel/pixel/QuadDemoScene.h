@@ -66,6 +66,7 @@ protected:
     float _posX;
     float _posY;
     float _targetX;
+    float _targetY;
     
     
     int         _numStars;
