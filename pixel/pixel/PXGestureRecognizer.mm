@@ -18,7 +18,15 @@
 - (id)initWithSceneManager:(SceneManager *)sceneManager {
     if (self = [super init])
         _sceneManager = sceneManager;
+        [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
+        [[UIAccelerometer sharedAccelerometer] setDelegate:self];
     return self;
+}
+
+-(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
+{
+    IScene* scene = _sceneManager->GetScene();
+    if (scene != NULL) scene->DidAccelerate(acceleration);
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

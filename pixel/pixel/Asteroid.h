@@ -24,12 +24,12 @@ public:
 protected:
     float _posX;
     float _posY;
-    float _velY;
+    float _speedY;
     float _scale;
     float _size;
     float _rotation;
     float _velRotation;
-    static AtlasCut* _spriteCut;
+    AtlasCut* _spriteCut;
 };
 
 #endif /* defined(__pixel__Asteroid__) */

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 
-@interface PXViewController : GLKViewController<UIAccelerometerDelegate>
+@interface PXViewController : GLKViewController
 
 @end

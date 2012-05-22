@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SceneManager.h"
 
-@interface PXGestureRecognizer : UIGestureRecognizer
+@interface PXGestureRecognizer : UIGestureRecognizer<UIAccelerometerDelegate>
 
 - (id)initWithSceneManager:(SceneManager *)sceneManager;
 

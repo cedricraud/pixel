@@ -18,6 +18,7 @@ public:
 	virtual void Init() = 0;
     virtual void Update(NSTimeInterval timeSinceLastUpdate) = 0;
     virtual void Draw() = 0;
+    virtual void DidAccelerate(UIAcceleration* acceleration) = 0;
     virtual void TouchBegan(double x, double y) = 0;
     virtual void TouchMoved(double x, double y) = 0;
     virtual void TouchEnded(double x, double y) = 0;

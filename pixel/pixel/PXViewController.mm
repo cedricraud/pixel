@@ -71,9 +71,6 @@ GLint uniforms[NUM_UNIFORMS];
     
     [self setupGL];
     
-    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:1.0/30.0];
-    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
-    
     texture = [[Texture2D alloc] initWithImage:[UIImage imageNamed:@"atlas.png"]];
         
     _sceneManager = new SceneManager();
@@ -163,13 +160,6 @@ GLint uniforms[NUM_UNIFORMS];
     
     IScene* scene = _sceneManager->GetScene();
     if (scene != NULL) scene->Update(self.timeSinceLastUpdate);
-}
-
--(void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
-{
-    //_rotation = acceleration.x * 0.2 + _rotation * 0.8;
-    //    NSLog(@"x: %f", acceleration.x);
-    //valueY = acceleration.x*30.0;
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect

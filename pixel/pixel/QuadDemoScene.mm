@@ -23,11 +23,13 @@ void QuadDemoScene::Init()
     // Path
     _pathPosX = 160;
     _pathTargetPosX = _pathPosX;
+    _speedX = 0;
+    _targetSpeedX = _speedX;
     _pathSize = PATH_SIZE;
     _pathLastMove = 0;
     
     // Obstacles
-    _speed = 1;
+    _speed = 1.5;
     _nextSpawnLeft = GetTime() + 1500;
     _nextSpawnRight = GetTime() + 1500;
     
@@ -54,7 +56,10 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
 {
     // Rocket
     _rotation += timeSinceLastUpdate * 0.5f;
-    _posX = _posX * 0.3 + _targetX * 0.7;
+    //_posX = _posX * 0.3 + _targetX * 0.7;
+    _speedX = _speedX * 0.8 + _targetSpeedX * 0.2;
+    _speedX = _speedX < 10 && _speedX > 10 ? 0 : _speedX;
+    _posX += _speedX;
     _posY = _posY * 0.1 + _targetY * 0.9;
     if (_posX < 30) _posX = 30;
     if (_posX > WIDTH - 30) _posX = WIDTH - 30;
@@ -65,10 +70,10 @@ void QuadDemoScene::Update(NSTimeInterval timeSinceLastUpdate)
         case DASH:
             time = GetTime() - _dashStart;
             dashSin = sin(time / DASH_TIME * M_PI);
-            //_posY = POSY_DEFAULT - dashSin * DASH_AMPLITUDE;
+            _posY = POSY_DEFAULT - dashSin * DASH_AMPLITUDE;
             if (time > DASH_TIME)
             {
-               // _posY = POSY_DEFAULT;
+                _posY = POSY_DEFAULT;
                 this->SetMode(NORMAL);
             }
             break;
@@ -183,7 +188,7 @@ void QuadDemoScene::Draw()
 
     // Rocket
     cut = _atlas->getCut("rocket");
-    Sprite::Draw(Vector2D(_posX, _posY), cut->width * 0.4, cut->height * 0.4, (_targetX - _posX) / 60,
+    Sprite::Draw(Vector2D(_posX, _posY), cut->width * 0.4, cut->height * 0.4, _speedX / 60,
                  cut->texX, cut->texY, cut->texW, cut->texH);
 
     Sprite::Flush();
@@ -205,9 +210,19 @@ void QuadDemoScene::SetMode(RocketMode mode)
     _mode = mode;
 }
 
+void QuadDemoScene::DidAccelerate(UIAcceleration* acceleration)
+{
+    float filteredX = acceleration.x;
+    _targetSpeedX = filteredX * 75;
+    // Low Pass Filter
+    //_targetSpeedX = _targetSpeedX > 15 ? 15 : _targetSpeedX < -15 ? -15 : _targetSpeedX;
+    // High Pass Filter
+    //_targetSpeedX = _targetSpeedX < 10 && _targetSpeedX > -10 ? 0 : _targetSpeedX;
+}
+
 void QuadDemoScene::TouchBegan(double x, double y)
 {
-    if (GetTime() - _lastTouch <= DASH_INPUT_DELAY)
+    if (GetTime() - _lastTouch > DASH_TIME)
         this->SetMode(DASH);
     
     this->TouchMoved(x, y);
@@ -216,7 +231,7 @@ void QuadDemoScene::TouchBegan(double x, double y)
 void QuadDemoScene::TouchMoved(double x, double y)
 {
     _targetX = x;
-    _targetY = y - 70;
+//    _targetY = y - 70;
 }
 
 void QuadDemoScene::TouchEnded(double x, double y)

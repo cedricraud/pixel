@@ -18,15 +18,15 @@
 #define WIDTH 320
 #define HEIGHT 480
 #define POSY_DEFAULT 410
-#define DASH_INPUT_DELAY 500.f
+//#define DASH_INPUT_DELAY 2000.f
 #define DASH_AMPLITUDE 50.f
 #define DASH_TIME 400.f
 #define SPAWN_DELAY_MIN 50
-#define SPAWN_DELAY_RANDOM 150
+#define SPAWN_DELAY_RANDOM 2000
 #define SPEED_ACC 0.06
-#define SPEED_MAX 3.f
+#define SPEED_MAX 2.f
 #define PATH_SIZE 100
-#define PATH_MOVE_DELAY 400
+#define PATH_MOVE_DELAY 1000
 
 enum RocketMode
 {
@@ -54,6 +54,7 @@ public:
     virtual void Init();
     virtual void Update(NSTimeInterval timeSinceLastUpdate);
     virtual void Draw();
+    virtual void DidAccelerate(UIAcceleration* acceleration);
     virtual void TouchBegan(double x, double y);
     virtual void TouchMoved(double x, double y);
     virtual void TouchEnded(double x, double y);
@@ -64,6 +65,8 @@ protected:
     long _lastTouch;
     float _rotation;
     float _posX;
+    float _speedX;
+    float _targetSpeedX;
     float _posY;
     float _targetX;
     float _targetY;
