@@ -3,7 +3,6 @@
 //  pixel-demo
 //
 //  Created by Cédric Raud on 09/05/12.
-//  Copyright (c) 2012 Pixel. All rights reserved.
 //
 
 #import "PXMainViewController.h"
@@ -30,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self doAction:nil];
+    //[self doAction:nil];
 }
 
 - (IBAction)doAction:(id)sender

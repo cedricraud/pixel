@@ -3,7 +3,7 @@
  *  Aquapong
  *
  *  Created by Sylvain NOWE on 9/14/08.
- *  Copyright 2008 __MyCompanyName__. All rights reserved.
+ *  Copyright 2008 Storybird. All rights reserved.
  *
  */
 

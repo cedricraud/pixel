@@ -3,7 +3,6 @@
 //  pixel
 //
 //  Created by Philippe Desgranges on 17/05/12.
-//  Copyright (c) 2012 pixel. All rights reserved.
 //
 
 #ifndef pixel_Atlas_h
