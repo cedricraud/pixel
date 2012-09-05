@@ -31,8 +31,8 @@
 		B208690D1559E5E800D14DA6 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B208690C1559E5E800D14DA6 /* Icon@2x.png */; };
 		B242163215652EAE004C049B /* PXGestureRecognizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = B242163115652EAE004C049B /* PXGestureRecognizer.mm */; };
 		B2A3B88A156552A10054672D /* Asteroid.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2A3B888156552A10054672D /* Asteroid.mm */; };
+		B2B5747615F7EB1C00CC7FF6 /* SceneManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2B5747515F7EB1C00CC7FF6 /* SceneManager.mm */; };
 		B2C4B6D4156512DC000FBF14 /* QuadDemoScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2C4B6D3156512DC000FBF14 /* QuadDemoScene.mm */; };
-		B2C4B6D81565179E000FBF14 /* SceneManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = B2C4B6D61565179E000FBF14 /* SceneManager.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,11 +73,11 @@
 		B2A3B886156551EA0054672D /* IObstacle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IObstacle.h; sourceTree = "<group>"; };
 		B2A3B888156552A10054672D /* Asteroid.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Asteroid.mm; sourceTree = "<group>"; };
 		B2A3B889156552A10054672D /* Asteroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asteroid.h; sourceTree = "<group>"; };
+		B2B5747515F7EB1C00CC7FF6 /* SceneManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SceneManager.mm; sourceTree = "<group>"; };
 		B2C4B6D11565107F000FBF14 /* IScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IScene.h; sourceTree = "<group>"; };
 		B2C4B6D2156511F0000FBF14 /* QuadDemoScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuadDemoScene.h; sourceTree = "<group>"; };
 		B2C4B6D3156512DC000FBF14 /* QuadDemoScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = QuadDemoScene.mm; sourceTree = "<group>"; };
 		B2C4B6D5156516A8000FBF14 /* SceneManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneManager.h; sourceTree = "<group>"; };
-		B2C4B6D61565179E000FBF14 /* SceneManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SceneManager.mm; path = ../SceneManager.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +159,7 @@
 				4A1303DE1565118A0096FB90 /* Texture2D.h */,
 				4A1303DF1565118A0096FB90 /* Texture2D.m */,
 				B2C4B6D5156516A8000FBF14 /* SceneManager.h */,
-				B2C4B6D61565179E000FBF14 /* SceneManager.mm */,
+				B2B5747515F7EB1C00CC7FF6 /* SceneManager.mm */,
 				B2C4B6D11565107F000FBF14 /* IScene.h */,
 				B2C4B6D2156511F0000FBF14 /* QuadDemoScene.h */,
 				B2C4B6D3156512DC000FBF14 /* QuadDemoScene.mm */,
@@ -270,11 +270,11 @@
 				B20869091559E35C00D14DA6 /* PXMainViewController.m in Sources */,
 				4AAD426C155EF5870002F2F5 /* Sprite.mm in Sources */,
 				B2C4B6D4156512DC000FBF14 /* QuadDemoScene.mm in Sources */,
-				B2C4B6D81565179E000FBF14 /* SceneManager.mm in Sources */,
 				4A1303E01565118A0096FB90 /* Texture2D.m in Sources */,
 				B242163215652EAE004C049B /* PXGestureRecognizer.mm in Sources */,
 				B2A3B88A156552A10054672D /* Asteroid.mm in Sources */,
 				4A850D41156593BC0003CE97 /* Atlas.mm in Sources */,
+				B2B5747615F7EB1C00CC7FF6 /* SceneManager.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

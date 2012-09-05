@@ -10,7 +10,7 @@ Features:
 *  Basic scene handling
 *  Basic input (touch and accelerometer) handling
 *  Batch rendering
-*  Atlas with png textures
+*  Atlas and png textures
 *  Some visual effects
 
 Not included:
